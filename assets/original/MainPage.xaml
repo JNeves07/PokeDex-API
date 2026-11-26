@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pokedex.MainPage"
+             Title="Pokédex">
+
+    <Grid RowDefinitions="Auto,*" Padding="16" RowSpacing="12">
+
+        <!-- Cadastro -->
+        <VerticalStackLayout Grid.Row="0" Spacing="8">
+            <Entry x:Name="NomeEntry" Placeholder="Nome" />
+            <Entry x:Name="TipoEntry" Placeholder="Tipo (ex: Elétrico)" />
+            <Entry x:Name="ImagemEntry" Placeholder="URL da imagem" />
+            <Entry x:Name="PoderesEntry" Placeholder="Poderes separados por vírgula" />
+            <Button Text="Salvar Pokémon" Clicked="OnSalvarClicked" />
+        </VerticalStackLayout>
+
+        <!-- Listagem -->
+        <CollectionView x:Name="PokemonsView" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" Margin="0,4" StrokeShape="RoundRectangle 12">
+                        <Grid ColumnDefinitions="80,*,Auto" ColumnSpacing="12">
+                            <Image Source="{Binding Imagem}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit" />
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding Tipo, StringFormat='Tipo: {0}'}" />
+                                <Label Text="{Binding PoderesTexto, StringFormat='Poderes: {0}'}" FontSize="12" />
+                            </VerticalStackLayout>
+                            <Button Grid.Column="2" Text="Excluir" Clicked="OnExcluirClicked" CommandParameter="{Binding .}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
