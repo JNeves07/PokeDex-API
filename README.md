@@ -1,4 +1,4 @@
-# Pokédex Laravel
+# PokeDex-API
 
 Versão moderna e estruturada da Pokédex que originalmente era um aplicativo .NET MAUI com SQLite. O código original foi extraído e preservado em [`assets/original/`](assets/original) (incluindo `Pokedex.zip`), enquanto este projeto reimplementa o domínio em **PHP 8.4 + Laravel 12**, com API REST, Eloquent, validação, testes automatizados, Docker e GitHub Actions.
 
